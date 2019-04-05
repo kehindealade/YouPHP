@@ -77,7 +77,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
       </ul>
      </div>
       </div>
-   <ul class="sidebar-menu do-nicescroll">
+   <ul class="sidebar-menu do-nicescrol">
             <?php
             if (User::canUpload()) {
             ?>
@@ -114,15 +114,6 @@ if (User::canUpload()) {
  <li class="dropdown-divider"></li>
 <?php } ?>
 
-<?php
-if (Category::canCreateCategory()) {
-?>
-<!-- <li>
-    <a href="<?php //echo $global['webSiteRootURL']; ?>categories" class="waves-effect" style="color: #000">
-        <span><?php //echo __($advancedCustom->CategoryLabel); ?></span> <i class="fas fa-folder pull-right"></i>
-</li> -->
-<?php } ?>
- <li class="dropdown-divider"></li>
 <li>
                                                     <a class="waves-effect" style="color: #000" href="<?php echo $global['webSiteRootURL']; ?>comments">
                                                         <span><?php echo __("Comments"); ?></span>
@@ -337,6 +328,7 @@ if (Category::canCreateCategory()) {
 <?php } ?>
   </ul>
 </nav>
+
 <div class="content-wrapper2 hidden-xs">
     <p style="color: #fff">Trending...</p>
 <?php  foreach ($videos as $key => $value) {
@@ -358,6 +350,7 @@ if (Category::canCreateCategory()) {
             <?php } ?>
             </div>
 </header>
+</div>
 
 <!--End topbar header-->
 

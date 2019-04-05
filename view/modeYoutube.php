@@ -225,7 +225,6 @@ $videos = Video::getAllVideos("viewable");
 
         <?php //include $global['systemRootPath'] . 'view/include/navbar.php'; ?>
         <?php include $global['systemRootPath'] . 'view/include/new_navbar.php'; ?>
-        
          <?php
         if (!empty($advancedCustomUser->showChannelBannerOnModeYoutube)) {
             ?>
@@ -236,8 +235,8 @@ $videos = Video::getAllVideos("viewable");
         }
         ?>
 
-
       <div class="clearfix"></div>
+
      
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -330,49 +329,23 @@ $videos = Video::getAllVideos("viewable");
                 ?>
 
      
-       <div class="col-12 col-lg-3">
+       <div class="col-12 col-xl-3 col-md-4 col-lg-4 col-sm-12" >
         <!-- style="width: 20rem; height: 20rem; -->
-        <div class="card" style="width: 18em;">
+        <div class="card">
 
-          <img src="<?php echo $images->thumbsJpg; ?>" class="card-img-top" height="120px">
+          <img src="<?php echo $images->thumbsJpg; ?>" class="card-img-top" height="160px">
 
           <meta itemprop="thumbnailUrl" content="<?php echo $img; ?>" />
                     <meta itemprop="uploadDate" content="<?php echo $value['created']; ?>" />
                     <center><time class="container duration float-right" itemprop="duration" datetime="<?php echo Video::getItemPropDuration($value['duration']); ?>"><?php echo Video::getCleanDuration($value['duration']); ?></time></center>
-            <div class="card-body" style="height: 13em;">
-                
-                
-                 <a href="<?php
-        $link = Video::getLink($value['id'], $value['clean_title'], "", $get);
-        $connection = "?";
-        if (strpos($link, '?') !== false) {
-            $connection = "&";
-        }
-        if (!empty($_GET['page']) && $_GET['page'] > 1) {
-            $link .= "{$connection}page={$_GET['page']}";
-        }
-        echo $link;
-        ?>" title="<?php echo $value['title']; ?>" class="videoLink h6">
-                <h4 class="card-title"><?php echo substr($value['title'], 0, 20); ?>...</h4>
-            </a>   
-
-               <?php
-                    if (empty($advancedCustom->doNotDisplayViews)) {
-                        ?>
-                       
-<ul class="list-group list-group-flush list shadow-none">
-            <li class="list-group-item d-flex justify-content-between align-items-center"> <span><i class="fas fa-user-alt float-right">&nbsp;<?php echo ($value['name']); ?></i></span><span class="badge badge-info badge-pill"><i class="far fa-eye"><?php echo number_format($value['views_count'], 0); ?> Views</i></span></li>
-</ul>
-                    <?php } ?>
-              
-               
-            </div>
+          
         </div>
        </div>
        
      <?php } ?>
      </div>
 
+</div>
 
 
 

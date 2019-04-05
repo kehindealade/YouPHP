@@ -374,6 +374,12 @@ hr {
 
 #wrapper.toggled div.card{
   width: 22em;
+  height: 20em;
+}
+
+div.card{
+  width: 18em;
+  height: 18em;
 }
 /* Page Content Wrapper */
 .content-wrapper {
