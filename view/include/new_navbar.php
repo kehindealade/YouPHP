@@ -71,7 +71,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
     <?php }else{
         ?>
              <li><a href="<?php echo $global['webSiteRootURL']; ?>user" style="color: #000">
-                <span><?php echo __("Sign In"); ?></span> <i class="fas fa-sign-out-alt"></i> Login</a>
+                <span><?php echo __("Sign In"); ?></span> <i class="fas fa-sign-out-alt"></i></a>
             </li>
     <?php } ?>
       </ul>
@@ -114,16 +114,18 @@ if (User::canUpload()) {
  <li class="dropdown-divider"></li>
 <?php } ?>
 
-<li>
+
+
+                                               <?php  if (User::isAdmin()) {
+                        ?>
+
+                        <li>
                                                     <a class="waves-effect" style="color: #000" href="<?php echo $global['webSiteRootURL']; ?>comments">
                                                         <span><?php echo __("Comments"); ?></span>
                                                         <i class="fas fa-book float-right"></i>
                                                         
                                                     </a>
                                                 </li>
-
-                                               <?php  if (User::isAdmin()) {
-                        ?>
                          <li class="dropdown-divider"></li>
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>admin/" class="waves-effect" style="color: #000">
