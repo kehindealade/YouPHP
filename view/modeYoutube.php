@@ -403,6 +403,10 @@ $videos = Video::getAllVideos("viewable");
                         $(document).ready(function () {
                         });
         </script>
+        <?php if (User::isLogged()) {
+        echo "</div>";
+    }
+        ?>
     </body>
 </html>
 <?php include $global['systemRootPath'] . 'objects/include_end.php'; ?>

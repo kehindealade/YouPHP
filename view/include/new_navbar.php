@@ -32,7 +32,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
  <div id="wrapper">
  
   <!--Start sidebar-wrapper-->
-   <div id="sidebar-wrapper" class="bg-theme bg-theme2" data-simplebar="" data-simplebar-auto-hide="true">
+   <div id="sidebar-wrapper" class="bg-theme bg-theme2" data-simplebar="init" data-simplebar-auto-hide="true">
      <div class="brand-logo">
       <a href="<?php echo empty($advancedCustom->logoMenuBarURL) ? $global['webSiteRootURL'] : $advancedCustom->logoMenuBarURL; ?>">
        <img src="<?php echo $global['webSiteRootURL'], $config->getLogo(true); ?>" class="logo-icon" alt="<?php echo $config->getWebSiteTitle(); ?>">
@@ -350,7 +350,10 @@ if (User::canUpload()) {
             <?php } ?>
             </div>
 </header>
-</div>
+<?php if (!User::isLogged()) {
+        echo "</div>";
+    }
+        ?>
 
 <!--End topbar header-->
 
