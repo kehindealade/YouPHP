@@ -1,5 +1,17 @@
 <?php
-global $includeDefaultNavBar;
+global $includeDefaultNavBar, $global, $config, $advancedCustom, $advancedCustomUser;
+if (!isset($global['systemRootPath'])) {
+    require_once '../videos/configuration.php';
+}
+require_once $global['systemRootPath'] . 'objects/user.php';
+require_once $global['systemRootPath'] . 'objects/category.php';
+$_GET['parentsOnly'] = "1";
+if (empty($_SESSION['language'])) {
+    $lang = 'us';
+} else {
+    $lang = $_SESSION['language'];
+}
+$thisScriptFile = pathinfo($_SERVER["SCRIPT_FILENAME"]);
 if (empty($sidebarStyle)) {
     $sidebarStyle = "display: none;";
 }
@@ -17,12 +29,10 @@ if (!$includeDefaultNavBar) {
             flex: 0 1 auto; /* Default */
         }
     }
-
     #mysearch.in,
     #mysearch.collapsing {
         display: block!important;
     }
-
     #myNavbar.in,
     #myNavbar.collapsing {
         display: block!important;
@@ -31,7 +41,6 @@ if (!$includeDefaultNavBar) {
         width: 100%;
         margin-left: 5px;
     }
-
     #rightProfileButton{
         padding: 0; 
         margin-right: 40px; 
@@ -49,15 +58,12 @@ if (!$includeDefaultNavBar) {
         #rightProfileButton{
             margin-right: 5px; 
         }
-
         #searchForm > div{
             width: 100%;
         }
-
         .mobilesecondnav {
             position: absolute; left: 40%; right: 5px;
         }
-
         #mysearch{
             /* width: 100%; */
             position: absolute;
@@ -66,9 +72,7 @@ if (!$includeDefaultNavBar) {
             padding-left: 0px;
             padding-right: 0px;
             background-color: #FFF;
-
         }
-
         #myNavbar{
             position: absolute;
             right: 0;
@@ -78,24 +82,18 @@ if (!$includeDefaultNavBar) {
         #myNavbar ul.right-menus{
             display: block;
         }
-
         .globalsearchfield {
             width: 80% !important;
         }
-
         .searchli {
             width: 100%;
             margin-right: 0;
             margin-left: 0;
-
         }
         .searchdiv {
-
         }
         .navbar-toggle {
             margin-right: 5px !important;
-
-
         }
         .left-side {
             padding: 0 5px;
@@ -106,20 +104,6 @@ if (!$includeDefaultNavBar) {
     }
 </style>
 <?php
-global $global, $config;
-if (!isset($global['systemRootPath'])) {
-    require_once '../videos/configuration.php';
-}
-require_once $global['systemRootPath'] . 'objects/user.php';
-require_once $global['systemRootPath'] . 'objects/category.php';
-$_GET['parentsOnly'] = "1";
-if (empty($_SESSION['language'])) {
-    $lang = 'us';
-} else {
-    $lang = $_SESSION['language'];
-}
-
-$thisScriptFile = pathinfo($_SERVER["SCRIPT_FILENAME"]);
 if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->disableNavbar)) || $thisScriptFile["basename"] === "signUp.php") || User::isLogged()) {
     $updateFiles = getUpdatesFilesArray();
     ?>
@@ -141,11 +125,9 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                         $('body').addClass('youtube')
                                         $("#sidebar").fadeIn();
                                     }
-
                                     $('#myNavbar').removeClass("in");
                                     $('#mysearch').removeClass("in");
                                 });
-
                                 $(document).on("click.sidebar", function () {
                                     $("#sidebar").fadeOut();
                                 });
@@ -343,7 +325,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                     min-width: 20px;
                                 }
                             </style>
-                            <div id="navBarFlag" data-input-name="country" data-selected-country="<?php echo $lang; ?>"></div>
+                            <div id="navBarFlag" data-input-name="country" data-selected-country="<?php echo $lang; ?>"><i class="fa fa-flag"></i></div>
                             <script>
                                 $(function () {
                                     $("#navBarFlag").flagStrap({
@@ -457,7 +439,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                             <li>
                                                 <a href="<?php echo User::getChannelLink(); ?>" >
                                                     <span class="fab fa-youtube"></span>
-                                                    <?php echo __("My Channel"); ?>
+                                                    <?php echo __($advancedCustomUser->MyChannelLabel); ?>
                                                 </a>
                                             </li>
 
@@ -473,9 +455,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                                 </li>
                                                 <?php
                                             }
-
                                             print YouPHPTubePlugin::navBarButtons();
-
                                             if ((($config->getAuthCanViewChart() == 0) && (User::canUpload())) || (($config->getAuthCanViewChart() == 1) && (User::canViewChart()))) {
                                                 ?>
                                                 <li>
@@ -500,7 +480,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                                     <li>
                                                         <a href="<?php echo $global['webSiteRootURL']; ?>categories">
                                                             <span class="glyphicon glyphicon-list"></span>
-                                                            <?php echo __("Categories"); ?>
+                                                            <?php echo __($advancedCustom->CategoryLabel); ?>
                                                         </a>
 
                                                     </li>
@@ -565,7 +545,6 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                         </li>
                         <?php
                     }
-
                     if (empty($advancedCustom->doNotShowLeftTrendingButton)) {
                         ?>
                         <li>
@@ -631,7 +610,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                 <div>
                                     <a href="<?php echo User::getChannelLink(); ?>" class="btn btn-danger btn-block" style="border-radius: 0;">
                                         <span class="fab fa-youtube"></span>
-                                        <?php echo __("My Channel"); ?>
+                                        <?php echo __($advancedCustomUser->MyChannelLabel); ?>
                                     </a>
 
                                 </div>
@@ -651,9 +630,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                 </li>
                                 <?php
                             }
-
                             print YouPHPTubePlugin::navBarButtons();
-
                             if ((($config->getAuthCanViewChart() == 0) && (User::canUpload())) || (($config->getAuthCanViewChart() == 1) && (User::canViewChart()))) {
                                 ?>
                                 <li>
@@ -683,7 +660,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                         <div>
                                             <a href="<?php echo $global['webSiteRootURL']; ?>categories" class="btn btn-info btn-block" style="border-radius: 0;">
                                                 <span class="glyphicon glyphicon-list"></span>
-                                                <?php echo __("Categories"); ?>
+                                                <?php echo __($advancedCustom->CategoryLabel); ?>
                                             </a>
                                         </div>
                                     </li>
@@ -747,7 +724,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                 <li>
                                     <a href="<?php echo $global['webSiteRootURL']; ?>categories">
                                         <span class="glyphicon glyphicon-list"></span>
-                                        <?php echo __("Categories"); ?>
+                                        <?php echo __($advancedCustom->CategoryLabel); ?>
                                     </a>
                                 </li>
                                 <li>
@@ -841,11 +818,10 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                     </li>
                     <!-- categories -->
                     <li>
-                        <h3 class="text-danger"><?php echo __("Categories"); ?></h3>
+                        <h3 class="text-danger"><?php echo __($advancedCustom->CategoryLabel); ?></h3>
                     </li>
                     <?php
                     if (!function_exists('mkSub')) {
-
                         function mkSub($catId) {
                             global $global;
                             unset($_GET['parentsOnly']);
@@ -864,17 +840,21 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                 echo "</ul>";
                             }
                         }
-
                     }
                     if (empty($advancedCustom->doNotDisplayCategoryLeftMenu)) {
                         $categories = Category::getAllCategories();
                         foreach ($categories as $value) {
-                            if (empty($value['total'])) {
+                            if($advancedCustom->ShowAllVideosOnCategory){
+                                $total = $value['fullTotal'];
+                            }else{
+                                $total = $value['total'];
+                            }
+                            if (empty($total)) {
                                 continue;
                             }
                             echo '<li class="' . ($value['clean_name'] == @$_GET['catName'] ? "active" : "") . '">'
                             . '<a href="' . $global['webSiteRootURL'] . 'cat/' . $value['clean_name'] . '" >'
-                            . '<span class="' . (empty($value['iconClass']) ? "fa fa-folder" : $value['iconClass']) . '"></span>  ' . $value['name'] . ' <span class="badge">' . $value['total'] . '</span></a>';
+                            . '<span class="' . (empty($value['iconClass']) ? "fa fa-folder" : $value['iconClass']) . '"></span>  ' . $value['name'] . ' <span class="badge">' . $total . '</span></a>';
                             mkSub($value['id']);
                             echo '</li>';
                         }
@@ -901,7 +881,6 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                         </li>
                         <?php
                     }
-
                     if (empty($advancedCustom->disableAboutLeftMenu)) {
                         ?>
                         <li>
@@ -912,7 +891,6 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                         </li>
                         <?php
                     }
-
                     if (empty($advancedCustom->disableContactLeftMenu)) {
                         ?>
                         <li>

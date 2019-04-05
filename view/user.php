@@ -26,6 +26,7 @@ foreach ($tags as $value) {
     </head>
 
     <body class="<?php echo $global['bodyClass']; ?>">
+        
         <?php include $global['systemRootPath'] . 'view/include/navbar.php'; ?>
 
         <div class="container-fluid">

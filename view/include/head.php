@@ -34,6 +34,14 @@ $theme = $config->getTheme();
 <link href="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $global['webSiteRootURL']; ?>view/js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $global['webSiteRootURL']; ?>view/css/fontawesome-free-5.5.0-web/css/all.min.css" rel="stylesheet" type="text/css"/>
+
+<!-- <link href="<?php echo $global['webSiteRootURL']; ?>view/css/sidebar-menu.css" rel="stylesheet" type="text/css"/> -->
+
+
+<!-- <link href="<?php echo $global['webSiteRootURL']; ?>view/css/app-style.css" rel="stylesheet" type="text/css"/> -->
+
+
+
 <link href="<?php echo $global['webSiteRootURL']; ?>view/css/flagstrap/css/flags.css" rel="stylesheet" type="text/css"/>
 <?php
 $cssFiles = array();
