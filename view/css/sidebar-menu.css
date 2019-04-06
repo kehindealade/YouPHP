@@ -40,7 +40,7 @@
 	padding: 0;
 }
 .sidebar-menu>li>a {
-	padding: 13px 5px 13px 15px;
+	padding: 0px 5px 8px 15px;
 	display: block;
 	border-left: 3px solid transparent;
 	color: rgba(255, 255, 255, 0.65);

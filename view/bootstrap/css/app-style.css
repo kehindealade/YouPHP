@@ -26,6 +26,14 @@ body {
     color: rgba(0, 0, 0, 0.72);
     letter-spacing: .5px;
 }
+
+.duration{
+  position: relative;
+  z-index: 999;
+  bottom: 8%;
+  left: 70%;
+  color: #fff;
+}
 [tabindex="-1"]:focus {
 	outline: 0!important
 }
@@ -350,7 +358,7 @@ hr {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  color: red;
+  color: #000;
 }
 
 
@@ -384,7 +392,7 @@ div.card{
 /* Page Content Wrapper */
 .content-wrapper {
     margin-left: 240px;
-	padding-top: 8px;
+	padding-top: 40px;
 	padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 70px;
@@ -604,13 +612,16 @@ div.card{
    padding: 0px 15px;
    z-index: 999;
    height: 60px;
-   background: #fff;
+   background: #0378e0;
    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.toggle-display{
+  margin-left: 0px !important;
+}
 .toggle-menu i {
-   margin-left: 240px;
+     margin-left: 240px;
    font-size: 14px;
    font-weight: 600;
    color: #000000;
@@ -644,8 +655,10 @@ div.card{
 
 .dropdown-divider{
     margin: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e6e6e6;
 }
+
+
 
 .dropdown-item{
 	padding: .70rem 1.5rem;
@@ -816,8 +829,8 @@ div.card{
 }
 
 .user-details .media .avatar img.side-user-img {
-  width: 35px;
-  height: 35px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
 }
@@ -863,29 +876,31 @@ div.card{
 
 /* SearachBar */
 .search-bar{
+  color: #fff;
 	margin-left: 20px;
 	position: relative;
 }
 
+
 .search-bar input{
-	 border: 1px solid #d8d8d8;
+    color: #fff;
      font-size: 15px;
      width: 530px;
-     border-radius: 0.25rem;
+     border-radius: 30px;
      height: 34px;
      padding: .375rem 2.0rem .375rem .75rem;
-     background-color: #ffffff;
+     background-color: #0378e0;
 }
 
 .search-bar input::placeholder {
-    color: #525151 !important;
+    color: #fff !important;
     font-size: 13px;
     opacity: .5 !important; /* Firefox */
 }
 
 
 .search-bar input:focus{ 
-   background-color: #f9f9f9;
+  color: #fff;
    border: 1px solid #f1f1f1;
    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.45)
 }

@@ -240,9 +240,20 @@ $videos = Video::getAllVideos("viewable");
      
   <div class="content-wrapper">
     <div class="container-fluid">
-    
-    
-       
+        <div class="row">
+        <div class="col-lg-9">  
+        
+        <div style="padding-bottom: 5px" class="float-left">
+        <span style="color: #fff">Featured</span> &nbsp;<span style="color: #fff">Trending</span>  &nbsp; <span style="color: #fff">Hot</span> 
+</div>
+    </div>
+         <div class="col-lg-3"> 
+    <div style="padding-bottom: 5px" class="float-right">
+        <span style="color: #fff">Sort by</span> 
+
+    </div>
+</div>
+    </div>
    
     
         <!-- <div class="container-fluid principalContainer" itemscope itemtype="http://schema.org/VideoObject"> -->
@@ -335,9 +346,15 @@ $videos = Video::getAllVideos("viewable");
 
           <img src="<?php echo $images->thumbsJpg; ?>" class="card-img-top" height="160px">
 
-          <meta itemprop="thumbnailUrl" content="<?php echo $img; ?>" />
+          
+                    
+                    <time class="container duration" itemprop="duration" datetime="<?php echo Video::getItemPropDuration($value['duration']); ?>"><?php echo Video::getCleanDuration($value['duration']); ?></time>
+                    <meta itemprop="thumbnailUrl" content="<?php echo $img; ?>" />
                     <meta itemprop="uploadDate" content="<?php echo $value['created']; ?>" />
-                    <center><time class="container duration float-right" itemprop="duration" datetime="<?php echo Video::getItemPropDuration($value['duration']); ?>"><?php echo Video::getCleanDuration($value['duration']); ?></time></center>
+                   
+           
+                <div class="container"><?php echo substr($value['title'], 0, 20); ?>...</div>
+           
           
         </div>
        </div>

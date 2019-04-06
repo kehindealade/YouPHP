@@ -40,20 +40,26 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
      </a>
    </div>
    <div class="user-details">
-    <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-      <div class="avatar"><img class="mr-3 side-user-img" src="<?php echo User::getPhoto(); ?>" alt="user avatar"></div>
+    <div class="media align-items-center text-center">
+      <div class="avatar text-center" style="margin-right: auto; margin-left: auto;"><img class="mr-3 side-user-img" src="<?php echo User::getPhoto(); ?>" alt="user avatar" ></div>
+
+       
+       </div>
+       <div data-toggle="collapse" data-target="#user-dropdown" class="user-pointer collapsed">
        <div class="media-body">
         <!-- <i class="fas fa-arrow-right"></i> -->
         <?php if (User::isLogged()) {
                                 ?>
                                 
-       <span class="side-user-name"><?php echo User::getName(); ?><i class="fas fa-angle-down float-right"></i></span> 
-      </div>
-       </div>
+      
+     
+        <center><span class="side-user-name text-capitalize" color="#000"><?php echo User::getName(); ?><i class="fas fa-angle-down float-right"></i></span> </center>
+ </div>
+</div>
      <div id="user-dropdown" class="collapse">
       <ul class="user-setting-menu" >
             <li><a href="<?php echo $global['webSiteRootURL']; ?>user"" style="color: #000"><i class="fas fa-user-alt"></i>  My Profile</a></li>
-             <li class="dropdown-divider"></li>
+             
       <li><a href="<?php echo $global['webSiteRootURL']; ?>logoff" style="color: #000">
             <?php
                                                     if (!empty($_COOKIE['user']) && !empty($_COOKIE['pass'])) { 
@@ -67,7 +73,7 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
                                                     }
                                                     ?>
         <i class="fas fa-sign-out-alt"></i> Logout</a></li>
-         <li class="dropdown-divider"></li>
+         
     <?php }else{
         ?>
              <li><a href="<?php echo $global['webSiteRootURL']; ?>user" style="color: #000">
@@ -75,43 +81,46 @@ if (((empty($advancedCustomUser->userMustBeLoggedIn) && empty($advancedCustom->d
             </li>
     <?php } ?>
       </ul>
+
      </div>
+     <li class="dropdown-divider"></li> 
       </div>
+
    <ul class="sidebar-menu do-nicescrol">
             <?php
             if (User::canUpload()) {
             ?>
-             <li class="dropdown-divider"></li>
+             
         <li>
         <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="waves-effect" style="color: #000">
          
-          <span><?php echo __("My videos"); ?></span> <i class="fab fa-youtube float-right"></i>
+          <span><?php echo __("My videos"); ?></span> 
         </a>
         </li>
     <?php } ?>
 
     <?php if ((($config->getAuthCanViewChart() == 0) && (User::canUpload())) || (($config->getAuthCanViewChart() == 1) && (User::canViewChart()))) {
     ?>
-     <li class="dropdown-divider"></li>
+     
     <li>
         <a href="<?php echo $global['webSiteRootURL']; ?>charts" class="waves-effect" style="color: #000">
          
-          <span><?php echo __("Dashboard"); ?></span> <i class="fas fa-tachometer-alt pull-right"></i>
+          <span><?php echo __("Dashboard"); ?></span> 
         </a>
     </li>
-     <li class="dropdown-divider"></li>
+     
 <?php } ?>
 
 <?php
 if (User::canUpload()) {
 ?>
- <li class="dropdown-divider"></li>
+ 
 <li>
     <a href="<?php echo $global['webSiteRootURL']; ?>subscribes" class="waves-effect" style="color: #000">
-        <span><?php echo __("Subscriptions"); ?></span> <i class="fas fa-check pull-right"></i>
+        <span><?php echo __("Subscriptions"); ?></span> 
     </a>
 </li>
- <li class="dropdown-divider"></li>
+ 
 <?php } ?>
 
 
@@ -122,48 +131,48 @@ if (User::canUpload()) {
                         <li>
                                                     <a class="waves-effect" style="color: #000" href="<?php echo $global['webSiteRootURL']; ?>comments">
                                                         <span><?php echo __("Comments"); ?></span>
-                                                        <i class="fas fa-book float-right"></i>
+                                                        
                                                         
                                                     </a>
                                                 </li>
-                         <li class="dropdown-divider"></li>
+                         
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>admin/" class="waves-effect" style="color: #000">
-        <span><?php echo __("Admin Panel"); ?></span> <i class="fas fa-columns float-right"></i></a>
+        <span><?php echo __("Admin Panel"); ?></span> </a>
                         </li>
- <li class="dropdown-divider"></li>
+ 
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>users" class="waves-effect" style="color: #000">
-        <span><?php echo __("Users"); ?></span> <i class="fas fa-users pull-right"></i></a>
+        <span><?php echo __("Users"); ?></span> </a>
                         </li>
- <li class="dropdown-divider"></li>
+ 
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups" class="waves-effect" style="color: #000">
-        <span><?php echo __("Users Groups"); ?></span> <i class="fas fa-users-cog pull-right"></i></a>
+        <span><?php echo __("Users Groups"); ?></span> </a>
                         </li>
 
                         <!-- <li>
                             <a href="<?php //echo $global['webSiteRootURL']; ?>categories/" class="waves-effect" style="color: #000">
         <span><?php //echo __($advancedCustom->CategoryLabel); ?></span> <i class="fas fa-folder pull-right"></i></a>
                         </li>
- --> <li class="dropdown-divider"></li>
+ --> 
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>update/" class="waves-effect" style="color: #000">
         <span><?php echo __("Update version"); ?>  <?php
                                         if (!empty($updateFiles)) {
-                                            ?><span class="label label-danger"><?php echo count($updateFiles); ?></span><?php
+                                            ?><span class=""><?php echo count($updateFiles); ?></span><?php
                                         }
-                                        ?></span> <i class="fas fa-arrow-alt-circle-down pull-right"></i></a>
+                                        ?></span> </a>
                         </li>
- <li class="dropdown-divider"></li>
+ 
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>siteConfigurations" class="waves-effect" style="color: #000">
-        <span><?php echo __("Site Configurations"); ?></span> <i class="fas fa-wrench float-right"></i></a>
+        <span><?php echo __("Site Configurations"); ?></span></a>
                         </li>
- <li class="dropdown-divider"></li>
+ 
                         <li>
                             <a href="<?php echo $global['webSiteRootURL']; ?>plugins" class="waves-effect" style="color: #000">
-        <span><?php echo __("Plugins"); ?></span> <i class="fas fa-puzzle-piece pull-right"></i></a>
+        <span><?php echo __("Plugins"); ?></span> </a>
                         </li>
                     <?php } ?>
     </ul>
@@ -173,90 +182,48 @@ if (User::canUpload()) {
 
    <!--Start topbar header-->
 <header class="topbar-nav">
+  <canvas id="canvas"></canvas>
  <nav class="navbar navbar-expand fixed-top">
   <ul class="navbar-nav mr-auto align-items-center">
     <li class="nav-item">
       <a class="nav-link toggle-menu" href="javascript:void(0)">
-       <i class="fas fa-bars"></i>
+        <script>
+          function changeIt(){
+        document.querySelector(".ico").classList.toggle("toggle-display");
+          }
+        </script>
+       <i class="fas fa-arrow-circle-left ico" style="color: #fff; font-size: 30px" onclick="changeIt()"></i></i>
      </a>
     </li>
     <li class="nav-item">
-      <form class="search-bar" action="<?php echo $global['webSiteRootURL']; ?>">
-        <input type="text" class="form-control" value="<?php
+      <form class="search-bar" action="<?php echo $global['webSiteRootURL']; ?>" name="MyForm">
+        <a href="<?php echo $global['webSiteRootURL']; ?>upload"><i class="fas fa-video " style="color: #fff"></i></a>
+        
+         
+        <input type="text" class="form-control" style="color:#fff !important; padding-left: 55px !important;" value="<?php
                         if (!empty($_GET['search'])) {
                             echo htmlentities($_GET['search']);
                         }
-                        ?>" name="search" placeholder="<?php echo __("Search"); ?>">
-         <!-- <button type="submit" style="display: inline"><i class="icon-magnifier"></button> -->
+                        ?>" name="search" placeholder="<?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . __("Search"); ?>">
+                        
+     <!--  <button class="btn" style="background-color: #0378e0;" type="submit"> -->
+        <a href="javascript:document.MyForm.submit();"><i class="fas fa-search" style="color: #fff;
+        position: absolute;
+        right: 90%;
+        "></i></a>
+      <!-- </button> -->
+   
+ 
+         
       </form>
     </li>
   </ul>
      
   <ul class="navbar-nav align-items-center right-nav-link">
-    <!-- <li class="nav-item dropdown-lg">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();">
-      <i class="fa fa-envelope-open-o"></i><span class="badge badge-light badge-up">12</span></a>
-      <div class="dropdown-menu dropdown-menu-right">
-        <ul class="list-group list-group-flush">
-         <li class="list-group-item d-flex justify-content-between align-items-center">
-          You have 12 new messages
-          <span class="badge badge-light">12</span>
-          </li>
-          <li class="list-group-item">
-          <a href="javaScript:void();">
-           <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-5.png" alt="user avatar"></div>
-            <div class="media-body">
-            <h6 class="mt-0 msg-title">Jhon Deo</h6>
-            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-            <small>Today, 4:10 PM</small>
-            </div>
-          </div>
-          </a>
-          </li>
-          <li class="list-group-item">
-          <a href="javaScript:void();">
-           <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-6.png" alt="user avatar"></div>
-            <div class="media-body">
-            <h6 class="mt-0 msg-title">Sara Jen</h6>
-            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-            <small>Yesterday, 8:30 AM</small>
-            </div>
-          </div>
-          </a>
-          </li>
-          <li class="list-group-item">
-          <a href="javaScript:void();">
-           <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-7.png" alt="user avatar"></div>
-            <div class="media-body">
-            <h6 class="mt-0 msg-title">Dannish Josh</h6>
-            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-             <small>5/11/2018, 2:50 PM</small>
-            </div>
-          </div>
-          </a>
-          </li>
-          <li class="list-group-item">
-          <a href="javaScript:void();">
-           <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-8.png" alt="user avatar"></div>
-            <div class="media-body">
-            <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
-            <p class="msg-info">Lorem ipsum dolor sit amet.</p>
-            <small>1/11/2018, 2:50 PM</small>
-            </div>
-          </div>
-          </a>
-          </li>
-          <li class="list-group-item text-center"><a href="javaScript:void();">See All Messages</a></li>
-        </ul>
-        </div>
-    </li> -->
+    
     
     <li class="nav-item language">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();"><i class="fas fa-flag"></i></a>
+      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void();"><i class="fas fa-flag" style="color: #fff"></i></a>
       <ul class="dropdown-menu dropdown-menu-right">
           <li>
                             <?php
@@ -317,13 +284,13 @@ if (User::canUpload()) {
            </div>
           </a>
         </li>
-        <!-- <li class="dropdown-divider"></li>
+        <!-- 
         <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li>
-        <li class="dropdown-divider"></li>
+        
         <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-        <li class="dropdown-divider"></li>
+        
         <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-        <li class="dropdown-divider"></li>
+        
         <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li> -->
       </ul>
     </li>
@@ -331,8 +298,23 @@ if (User::canUpload()) {
   </ul>
 </nav>
 
+
 <div class="content-wrapper2 hidden-xs">
-    <p style="color: #fff">Trending...</p>
+   
+   <div class="row">
+        <div class="col-lg-9">  
+        
+        <div style="padding-bottom: 5px" class="float-left">
+        <span style="color: #fff">Featured</span> &nbsp;<span style="color: #fff">Trending</span>  &nbsp; <span style="color: #fff">Hot</span> 
+</div>
+    </div>
+         <div class="col-lg-3"> 
+    <div style="padding-bottom: 5px" class="float-right">
+        <span style="color: #fff">Sort by</span> 
+
+    </div>
+</div>
+    </div>
 <?php  foreach ($videos as $key => $value) {
     if (!empty($video['id']) && $video['id'] == $value['id']) {
         continue; // skip video
@@ -348,14 +330,20 @@ if (User::canUpload()) {
                 ?>
 
         <img src="<?php echo $images->thumbsJpg ?>" alt="user avatar" class="customer-img rounded-circle" >
+        <img src="<?php echo $images->thumbsJpg ?>" alt="user avatar" class="customer-img rounded-circle" >
+        
             
             <?php } ?>
-            </div>
+           
+          </div>
 </header>
+
 <?php if (!User::isLogged()) {
         echo "</div>";
     }
         ?>
+
+         
 
 <!--End topbar header-->
 
